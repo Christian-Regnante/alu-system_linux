@@ -5,6 +5,9 @@ static int skip_section(const section_info_t *section, const char *name)
 	if (section->type == 0 || section->type == SHT_SYMTAB ||
 			section->type == SHT_NOBITS || section->size == 0)
 		return (1);
+	if ((section->type == SHT_REL || section->type == SHT_RELA) &&
+			!(section->flags & SHF_ALLOC))
+		return (1);
 	if (section->type == SHT_STRTAB &&
 			(strcmp(name, ".strtab") == 0 ||
 			 strcmp(name, ".shstrtab") == 0))
