@@ -73,11 +73,10 @@ int objdump_dump(const char *path, elf_info_t *elf,
 	uint64_t entry = elf->is_64 ? get64(elf, elf->data + 0x18) :
 		get32(elf, elf->data + 0x18);
 	const char *name;
-	int printed = 0;
 
 	printf("\n%s:     file format %s\n", path, target_name(elf));
 	print_flags(elf, sections);
-	printf("start address 0x%0*lx\n", elf->is_64 ? 16 : 8,
+	printf("start address 0x%0*lx\n\n", elf->is_64 ? 16 : 8,
 			(unsigned long)entry);
 
 	for (i = 0; i < elf->shnum; i++)
@@ -90,10 +89,7 @@ int objdump_dump(const char *path, elf_info_t *elf,
 		if (skip_section(&sections[i], name))
 			continue;
 
-		if (printed)
-			printf("\n");
 		print_section(elf, &sections[i], name);
-		printed = 1;
 	}
 
 	return (0);
