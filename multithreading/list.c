@@ -90,3 +90,4 @@ void list_each(list_t *list, node_func_t func)
 	for (node = list->head; node; node = node->next)
 		func(node->content);
 }
+

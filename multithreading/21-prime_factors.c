@@ -70,3 +70,4 @@ unsigned long int lim_binary(unsigned long int n)
 	}
 	return (mid);
 }
+
