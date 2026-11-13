@@ -48,3 +48,4 @@ int tprintf(char const *format, ...)
 	pthread_mutex_unlock(&mutex);
 	return (0);
 }
+

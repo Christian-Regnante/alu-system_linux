@@ -15,3 +15,4 @@ int tprintf(char const *format, ...)
 	printf("[%ld] %s", tid, format);
 	return (0);
 }
+
